@@ -16,3 +16,8 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+
+# web
+web/.next
+web/.env
