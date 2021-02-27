@@ -1,15 +1,17 @@
 :root {
-  --white: #FFF;
-  --background: #F2F3F5;
-  --gray-line: #DCDDE0;
-  --text: #666666;
   --text-highlight: #B3B9FF;
-  --title: #2E384D;
-  --red: #E83F5B;
-  --green: #4CD62B;
-  --blue: #5965E0;
-  --blue-dark: #4953B8;
   --blue-twitter: #2AA9E0;
+
+  --blue-primary: #5965E0;
+  --blue-secondary: #4953B8;
+  --green: #4CD62B;
+  --red: #E83F5B;
+  --text: #666666;
+  --text-blue: #B2B9FF;
+  --title: #2E384D;
+  --gray-line: #DCDDE0;
+  --background: #F2F3F5;
+  --white: #FFF;
 }
 
 * {
@@ -27,8 +29,13 @@ body, input, textarea, button {
   font: 400 1rem 'Inter', sans-serif;
 }
 
+input {
+  border: 0;
+}
+
 button {
   cursor: pointer;
+  border: 0;
 }
 
 a {

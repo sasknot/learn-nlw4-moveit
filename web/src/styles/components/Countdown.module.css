@@ -50,7 +50,7 @@
   border: 0;
   border-radius: 5px;
 
-  background: var(--blue);
+  background: var(--blue-primary);
   color: var(--white);
 
   font-size: 1.5rem;
@@ -66,7 +66,7 @@
 }
 
 .countdownButton:not([disabled]):hover {
-  background: var(--blue-dark);
+  background: var(--blue-secondary);
 }
 
 .countdownButtonActive {

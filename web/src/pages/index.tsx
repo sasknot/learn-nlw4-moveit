@@ -1,65 +1,34 @@
 import Head from 'next/head';
-import { GetServerSideProps } from 'next';
+import { useRouter } from 'next/router';
+import styles from '../styles/pages/Index.module.css';
 
-import { ExperienceBar } from '../components/ExperienceBar';
-import { Profile } from '../components/Profile';
-import { CompletedChallenges } from '../components/CompletedChallenges';
-import { Countdown } from '../components/Countdown';
-import { ChallengeBox } from '../components/ChallengeBox';
-import { CountdownProvider } from '../contexts/CountdownContext';
-import { ChallengesProvider } from '../contexts/ChallengesContext';
-import styles from '../styles/pages/Home.module.css';
+export default function Index () {
+  const router = useRouter();
 
-interface HomeProps {
-  level: number;
-  currentExperience: number;
-  challengesCompleted: number;
-}
-
-export default function Home (props: HomeProps) {
-  return (
-    <ChallengesProvider
-      level={props.level}
-      currentExperience={props.currentExperience}
-      challengesCompleted={props.challengesCompleted}
-    >
-      <div className={styles.container}>
-        <Head>
-          <title>Início | Move.it</title>
-        </Head>
-
-        <ExperienceBar />
-
-        <CountdownProvider>
-          <section>
-            <div>
-              <Profile />
-              <CompletedChallenges />
-              <Countdown />
-            </div>
-
-            <div>
-              <ChallengeBox />
-            </div>
-          </section>
-        </CountdownProvider>
-      </div>
-    </ChallengesProvider>
-  );
-}
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const {
-    level = 1,
-    currentExperience = 0,
-    challengesCompleted = 0
-  } = context.req.cookies
-
-  return {
-    props: {
-      level: Number(level),
-      currentExperience: Number(currentExperience),
-      challengesCompleted: Number(challengesCompleted)
-    }
+  function login () {
+    router.push('/home');
   }
+
+  return (
+    <div className={styles.loginContainer}>
+      <Head>
+        <title>Login | Move.it</title>
+      </Head>
+
+      <div className={styles.loginPanel}>
+        <h1><img src="logo-login.svg" alt="move.it" /></h1>
+        <h2>Bem-vindo</h2>
+        <p>
+          <img src="icons/github.svg" alt="Github" />
+          <span>Faça login com seu Github para começar</span>
+        </p>
+        <div className={styles.loginUsername}>
+          <input type="text" placeholder="Digite seu username" />
+          <button type="button" onClick={login}>
+            <img src="icons/arrow.svg" alt="&gt;" />
+          </button>
+        </div>
+      </div>
+    </div>
+  )
 }
