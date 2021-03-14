@@ -1,12 +1,13 @@
 .loginContainer {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   flex-flow: row nowrap;
 
   background: var(--blue-primary) url('/bg-login.svg') no-repeat left top;
   height: 100vh;
   width: 100vw;
+  padding-right: 10rem;
 }
 
 .loginPanel {
@@ -36,7 +37,7 @@
   margin-right: 1.25rem;
 }
 
-.loginUsername {
+.loginInput {
   display: flex;
   justify-content: space-between;
   flex-flow: row nowrap;
@@ -45,7 +46,7 @@
   margin-top: 2.5rem;
 }
 
-.loginUsername input {
+.loginInput input {
   flex: 1 auto auto;
 
   background: linear-gradient(to right, rgb(73, 83, 184), rgba(73, 83, 184, 0.2) 80%);
@@ -59,17 +60,17 @@
   transition: box-shadow 200ms ease-in-out;
 }
 
-.loginUsername input::placeholder {
+.loginInput input::placeholder {
   color: var(--text-blue);
 }
 
-.loginUsername input:active,
-.loginUsername input:focus {
+.loginInput input:active,
+.loginInput input:focus {
   outline: none;
   box-shadow: 0 0 0 1.5px #414AA3 inset;
 }
 
-.loginUsername button {
+.loginInput button {
   background: var(--blue-secondary);
   border-radius: 0 5px 5px 0;
   width: 80px;
@@ -80,9 +81,9 @@
   transition: background-color 200ms ease-in-out;
 }
 
-.loginUsername button:hover,
-.loginUsername button:active,
-.loginUsername button:focus {
+.loginInput button:hover,
+.loginInput button:active,
+.loginInput button:focus {
   background-color: var(--green);
   outline: none;
 }

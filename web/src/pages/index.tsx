@@ -1,13 +1,25 @@
+import { useContext, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+
+import { UserContext } from '../contexts/UserContext';
 import styles from '../styles/pages/Index.module.css';
 
 export default function Index () {
+  const { login } = useContext(UserContext);
   const router = useRouter();
+  const $usernameInput = useRef(null);
 
-  function login () {
+  function submit (event) {
+    event.preventDefault();
+
+    login($usernameInput.current.value);
     router.push('/home');
   }
+
+  useEffect(() => {
+    $usernameInput.current.focus();
+  }, [])
 
   return (
     <div className={styles.loginContainer}>
@@ -22,12 +34,12 @@ export default function Index () {
           <img src="icons/github.svg" alt="Github" />
           <span>Faça login com seu Github para começar</span>
         </p>
-        <div className={styles.loginUsername}>
-          <input type="text" placeholder="Digite seu username" />
-          <button type="button" onClick={login}>
+        <form className={styles.loginInput} onSubmit={submit}>
+          <input ref={$usernameInput} type="text" placeholder="Digite seu username" />
+          <button type="submit">
             <img src="icons/arrow.svg" alt="&gt;" />
           </button>
-        </div>
+        </form>
       </div>
     </div>
   )
